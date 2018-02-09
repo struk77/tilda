@@ -1,10 +1,12 @@
-import asyncio
+import aiohttp
 from aiohttp import web
 
 
 async def async_task(request):
-    asyncio.sleep(5)
-    return None
+    async with aiohttp.ClientSession() as session:
+        async with session.get('https://api.github.com/events') as resp:
+            print(resp.status)
+            print(await resp.text())
 
 
 async def index(request):
