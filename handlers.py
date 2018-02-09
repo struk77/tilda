@@ -2,7 +2,7 @@ import asyncio
 from aiohttp import web
 
 
-def async_task(request):
+async def async_task(request):
     asyncio.sleep(5)
     return None
 
